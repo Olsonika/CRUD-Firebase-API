@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="frontend-row">
+    <div class="col">
+      <form>
+        <div class="form-group">
+          <div class="text-center">
+            <button class="btn btn-btn btn-primary content_margin" (click)="selectAll()">Select All</button>
+            <button class="btn btn-btn btn-primary content_margin" (click)="createPlant()">Add Plant</button>
+          </div>
+
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col" class="id-column">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col" class="price-column">Health</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Save</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let plant of examplePlants">
+              <tr>
+                <!--https://angular.io/guide/template-syntax#ngModel-->
+                <td><input class="id-column form-control" placeholder="id" [value]="plant.id" (input)="plant.id=$event.target.value"></td>
+                <td><input class="form-control" placeholder="plant" [value]="plant.name" (input)="plant.name=$event.target.value"></td>
+                <td><input class="form-control  " placeholder="description" [value]="plant.description" (input)="plant.description=$event.target.value"></td>
+                <td><input class="price-column form-control" placeholder="health" [value]="plant.health " (input)="plant.health=$event.target.value"></td>
+                
+                <td><button type="button" class="btn btn-warning" (click)="updatePlant(plant)">Update</button></td>
+                <td><button type="button" class="btn btn-danger" (click)="deletePlant(plant)">Delete</button></td>
+                <td><button type="button" class="btn btn-success" (click)="savePlant(plant)" *ngIf="plant.save !== undefined">Save</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

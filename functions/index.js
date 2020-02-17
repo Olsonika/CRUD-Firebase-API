@@ -47,8 +47,8 @@ app.get('/api/read/:id', (req, res) => {
     (async () =>{
         try {
            const document = db.collection('plants').doc(req.params.id);
-            let product = await document.get();
-            let response = product.data();
+            let plant = await document.get();
+            let response = plant.data();
 
             return res.status(200).send(response);
         }
@@ -59,7 +59,7 @@ app.get('/api/read/:id', (req, res) => {
     })();
 });
 
-//Read all products
+//Read all plants
 //Get
 app.get('/api/read', (req, res) => {
     (async () =>{
@@ -118,7 +118,7 @@ app.put('/api/update/:id', (req, res) => {
 app.delete('/api/delete/:id', (req, res) => {
     (async () =>{
         try {
-            const document = db.collection('products').doc(req.params.id);
+            const document = db.collection('plants').doc(req.params.id);
            await document.delete();
 
             return res.status(200).send();
